@@ -1,0 +1,15 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   globs: [],
+0 silly argv   lernaVersion: '6.6.2',
+0 silly argv   '$0': 'lerna',
+0 silly argv   pkg: '@imooc-cli'
+0 silly argv }
+1 notice cli v6.6.2
+2 verbose rootPath /Users/liang/文件/CodeSpace/jiagoushi2022-src/doudoumao-test-cli/doudoumao-test-cli
+3 error Error: Invalid tag name "@imooc-cli": Tags may not have any characters that encodeURIComponent encodes.
+3 error     at invalidTagName (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:94:15)
+3 error     at fromRegistry (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:299:13)
+3 error     at resolve (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:84:12)
+3 error     at npa (/usr/local/lib/node_modules/lerna/node_modules/npm-package-arg/npa.js:55:10)
+3 error     at AddCommand.initialize (/usr/local/lib/node_modules/lerna/node_modules/@lerna/legacy-package-management/dist/index.js:4482:57)

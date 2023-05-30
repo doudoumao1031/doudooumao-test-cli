@@ -1,0 +1,22 @@
+{
+  "name": "@doudoumao-test-cli/core",
+  "version": "0.0.0",
+  "description": "doudoumao-test-cli core",
+  "author": "doudou <doudoumao1031@gmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/core.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "node ./__tests__/core.test.js"
+  },
+  "dependencies": {
+    "@doudoumao-test-cli/utils": "^1.0.0"
+  }
+}
