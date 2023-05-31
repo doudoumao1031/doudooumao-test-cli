@@ -22,5 +22,8 @@
   "dependencies": {
     "@doudoumao-test-cli/utils": "^1.0.2"
   },
-  "gitHead": "9a71db5ecd50123bdec4d7e60203ceb279d4dd51"
+  "gitHead": "9a71db5ecd50123bdec4d7e60203ceb279d4dd51",
+  "publishConfig": {
+    "access": "public"
+  }
 }
