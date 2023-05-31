@@ -1,6 +1,6 @@
 {
   "name": "@doudoumao-test-cli/core",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "doudoumao-test-cli core",
   "author": "doudou <doudoumao1031@gmail.com>",
   "homepage": "",
@@ -20,7 +20,7 @@
     "test": "node ./__tests__/core.test.js"
   },
   "dependencies": {
-    "@doudoumao-test-cli/utils": "^1.0.0"
+    "@doudoumao-test-cli/utils": "^1.0.2"
   },
   "gitHead": "9a71db5ecd50123bdec4d7e60203ceb279d4dd51"
 }
