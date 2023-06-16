@@ -1,5 +1,5 @@
 {
-  "name": "get-npm-info",
+  "name": "@doudoumao-test-cli/get-npm-info",
   "version": "1.0.7",
   "description": "get npm info",
   "author": "doudou <doudoumao1031@gmail.com>",
@@ -27,5 +27,6 @@
     "axios": "^1.4.0",
     "semver": "^7.5.2",
     "url-join": "4.0.1"
-  }
+  },
+  "gitHead": "2a6a5ea48af1093a00a9feca4e71fbdf48eea0db"
 }
