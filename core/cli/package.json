@@ -20,7 +20,7 @@
     "test": "node ./__tests__/core.test.js"
   },
   "dependencies": {
-    "@doudoumao-test-cli/get-npm-info": "file:../../utils/get-npm-info",
+    "@doudoumao-test-cli/get-npm-info": "^1.0.8",
     "@doudoumao-test-cli/log": "^1.0.8",
     "@doudoumao-test-cli/utils": "^1.0.8",
     "colors": "^1.4.0",
@@ -32,7 +32,7 @@
     "semver": "^7.5.1",
     "userhome": "^1.0.0"
   },
-  "gitHead": "2a6a5ea48af1093a00a9feca4e71fbdf48eea0db",
+  "gitHead": "2da6e41f00cc62135dce6848da3530cb766eac8b",
   "publishConfig": {
     "access": "public"
   },
