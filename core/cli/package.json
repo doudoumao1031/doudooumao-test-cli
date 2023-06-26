@@ -24,6 +24,7 @@
     "@doudoumao-test-cli/log": "^1.0.9",
     "@doudoumao-test-cli/utils": "^1.0.9",
     "colors": "^1.4.0",
+    "commander": "^11.0.0",
     "dotenv": "^16.1.4",
     "import-local": "^3.1.0",
     "minimist": "^1.2.8",

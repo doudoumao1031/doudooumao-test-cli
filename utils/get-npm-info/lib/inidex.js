@@ -36,16 +36,27 @@ async function getNpmVersions(npmName, registry) {
 }
 
 function getSemverVersions(baseVersion, versions) {
+  // console.log(versions, baseVersion)
   versions = versions.filter((version) => {
-    semver.satisfies(version, `^${baseVersion}`)
-  }).sort((a, b) => {
-    return semver.gt(b, a)
+    return semver.satisfies(version, `^${baseVersion}`)
+    // return semver.gt(version, baseVersion)
   })
+  // console.log(versions)
+  versions.sort((a,b) => {
+    if(a===b){
+      return 0
+    }else{
+      return semver.gt(b,a)?1:-1
+    }
+  })
+  // console.log(versions)
+  // console.log(  semver.gt('1.0.6','1.0.5'))
   return versions
 }
 
 async function getNpmSemverVersion(baseVersion, npmName, registry){
   const versions = await getNpmVersions(npmName, registry)
+  // console.log(versions)
   const newVersions = getSemverVersions(baseVersion, versions)
   // console.log(newVersions)
   // return newVersions

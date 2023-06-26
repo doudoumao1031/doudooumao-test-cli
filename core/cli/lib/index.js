@@ -14,7 +14,12 @@ const pathExists = require('path-exists')
 const log = require('@doudoumao-test-cli/log')
 const constant = require('./const')
 const pkg = require('../package.json')
+
+const commander = require('commander')
+
 let args
+
+const program = new commander.Command()
 
 async function core() {
   try {
@@ -25,12 +30,26 @@ async function core() {
     checkInputArgs() // --debug降级
     checkEnv()
     await checkGlobalUpdate()
-    // log.verbose('debug', 'test debug log') // 更低的输出level --debug模式下启用
+    // log.verbose('debug', 'test debug log') // 更低的输出level --debug模式下启用 
+    // ===分界线===
+    registerCommand()
   } catch (error) {
     log.error(error.message)
   }
 } 
 // core()
+
+function registerCommand(){
+  program
+    .name(Object.keys(pkg.bin)[0])
+    .usage('<command> [options]')
+    .version(pkg.version)
+    .option('-d, --debug', '是否开启调试模式', false)
+  
+  // prog
+
+  program.parse(process.argv)
+}
 
 async function checkGlobalUpdate() {
   // 1.获取当前版本号和模块名
@@ -38,24 +57,33 @@ async function checkGlobalUpdate() {
   const npmName = pkg.name
   // 2.调用npm API 获取所有版本号
   const {getNpmSemverVersion} = require('@doudoumao-test-cli/get-npm-info')
-  const newVersion = await getNpmSemverVersion(currentVersion, npmName)
-  console.log(newVersion);
+  const lastVersion = await getNpmSemverVersion(currentVersion, npmName)
+  // console.log(newVersion);
   // 3.比对版本号
   // 4.提示用户
+  if(lastVersion && semver.gt(lastVersion, currentVersion)){
+    // log.warn('更新提示', colors.yellow(`请手动更新 ${npmName}, 当前版本:${currentVersion}, 最新版本:${lastVersion}
+    // 更新命令: npm install -g ${npmName}`))
+    log.warn(colors.yellow(`请手动更新 ${npmName}, 当前版本:${currentVersion}, 最新版本:${lastVersion}, 
+    更新命令: npm install -g ${npmName}`))
+  }
 }
 
 function checkEnv() {
   const dotenv = require('dotenv')
   const dotenvPath = path.resolve(userhome(), '.env')
+  // console.log(process.env.CLI_HOME)
   if(pathExists(dotenvPath)){
     // config = dotenv.config({
+    // 会把读取的环境变量配置加入process.env中
     dotenv.config({
       path: dotenvPath
     })
   }
-  // config = createDefaultConfig()
+  // console.log(process.env.CLI_HOME)
   createDefaultConfig()
-  // log.verbose('环境变量', config, process.env.CLI_HOME_PATH)
+  // createDefaultConfig()
+  log.verbose('环境变量', process.env.CLI_HOME_PATH)
 }
 
 function createDefaultConfig(params) {
@@ -68,7 +96,7 @@ function createDefaultConfig(params) {
     cliConfig['cliHome'] = path.join(userhome(), constant.DEFAULT_CLI_HOME)
   }
   process.env.CLI_HOME_PATH = cliConfig.cliHome
-  // return cliConfig
+  return cliConfig
 }
 
 function checkInputArgs() {
